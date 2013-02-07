@@ -1,0 +1,3 @@
+*.pyc
+manage.py
+django_pdf
