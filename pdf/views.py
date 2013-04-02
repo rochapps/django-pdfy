@@ -21,13 +21,14 @@ class RenderPDF(object):
     """
     
     template_name = 'django_pdf/hello_world.html'
+    assets_url = settings.MEDIA_ROOT
     
     def fetch_resources(self, uri, rel=''):
         """"
             Method return absolute path to resources.
         """
         absolute_path = os.path.join(settings.MEDIA_ROOT,
-            uri.replace(settings.MEDIA_URL, ""))
+            uri.replace(assets_url, ""))
         return absolute_path
 
     def render_to_response(self, context, **response_kwargs):
