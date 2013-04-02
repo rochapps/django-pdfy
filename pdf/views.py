@@ -31,7 +31,7 @@ class RenderPDF(TemplateView):
         return absolute_path
 
     def render_to_response(self, context, **response_kwargs):
-        context = self.get_context_data(context)
+        context = self.get_context_data(**context)
         return self.render_to_pdf(context)
 
     def render_to_pdf(self, context):
