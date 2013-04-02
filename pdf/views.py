@@ -15,7 +15,7 @@ from django.template import Context
 from django.views.generic.base import TemplateView
 
 
-class RenderPDF(TemplateView):
+class RenderPDF(object):
     """
         class based view to render template in PDF format.
     """
