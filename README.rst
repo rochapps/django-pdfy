@@ -29,7 +29,7 @@ For example, in myapp/views.py::
     class TransactionListView(RenderPDF, ListView):
         # base_queryset is a queryset that contains all the objects that are
         # accessible by the API:
-        template_name = Widget.objects.all()
+        template_name = 'mydpf.html'
         model = Transaction
 
 In myapp/urls.py::
