@@ -7,12 +7,15 @@ import datetime
 import cStringIO as StringIO
 import ho.pisa as pisa
 from cgi import escape
+import logging
 
 from django.conf import settings
 from django.http import HttpResponse
 from django.template.loader import get_template
 from django.template import Context
 from django.views.generic.base import TemplateView
+
+logger = logging.getLogger(__name__)
 
 
 class RenderPDF(object):
@@ -29,6 +32,7 @@ class RenderPDF(object):
         """
         absolute_path = os.path.join(settings.MEDIA_ROOT,
             uri.replace(self.assets_url, ""))
+        logger.debug(absolute_path)
         return absolute_path
 
     def render_to_response(self, context, **response_kwargs):
