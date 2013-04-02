@@ -30,10 +30,11 @@ class RenderPDF(TemplateView):
             uri.replace(settings.MEDIA_URL, ""))
         return absolute_path
 
-    def render_to_response(self, context):
-        return self.render_to_pdf(**context)
+    def render_to_response(self, context, **response_kwargs):
+        context = self.get_context_data(context)
+        return self.render_to_pdf(context)
 
-    def render_to_pdf(self, **context):
+    def render_to_pdf(self, context):
         """
             renders pdf file
         """
