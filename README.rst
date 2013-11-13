@@ -6,7 +6,7 @@ django-pdf lets you to render any view as pdf, css and images are also available
 in your templates.
 
 .. image::
-    https://secure.travis-ci.org/rochapps/django-pdf
+    https://secure.travis-ci.org/rochapps/django-pdf.png
     :alt: Build Status
         :target: https://secure.travis-ci.org/rochapps/django-pdf
 
