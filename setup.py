@@ -1,31 +1,45 @@
 import os
 from setuptools import setup, find_packages
 
-README = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 
-# allow setup.py to be run from any path
-os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
+def read_file(filename):
+    """Read a file into a string"""
+    path = os.path.abspath(os.path.dirname(__file__))
+    filepath = os.path.join(path, filename)
+    try:
+        return open(filepath).read()
+    except IOError:
+        return ''
+
 
 setup(
-    name = 'django-pdf',
-    version = '0.1',
-    packages = find_packages(),
-    include_package_data = True,
-    description = 'class based view to render pdf.',
-    long_description = README,
-    url = 'http://www.rochapps.com/',
-    author = 'Victor Rocha',
-    author_email = 'victor@rochapps.com',
-    classifiers = [
-        'Environment :: Web Environment',
-        'Framework :: Django',
+    name='django-pdf',
+    version=__import__('pdf').__version__,
+    author='Victor Rocha',
+    author_email='victor@rochapps.com',
+    packages=find_packages(),
+    include_package_data=True,
+    url='https://github.com/rochapps/django-pdf',
+    license='BDS',
+    description=u' '.join(__import__('pdf').__doc__.splitlines()).strip(),
+    classifiers=[
+        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: BSD License', # example license
-        'Operating System :: OS Independent',
-        'Programming Language :: Python',
+        'Programming Language :: Python',      
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
-        'Topic :: Internet :: WWW/HTTP',
-        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+        'Framework :: Django',
+        'Development Status :: 4 - Beta',
+        'Operating System :: OS Independent',
     ],
+    long_description=read_file('README.rst'),
+    install_requires=[
+        'html5lib==0.95',
+        'pisa==3.0.33',
+        'pyPdf==1.13',
+        'reportlab==2.6'
+    ],
+    tests_require=('mock'),
+    test_suite="runtests.runtests",
+    zip_safe=False,
 )

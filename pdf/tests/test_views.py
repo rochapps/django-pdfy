@@ -1,4 +1,3 @@
-import unittest
 from mock import patch
 
 from django.conf import settings
@@ -13,43 +12,37 @@ class RenderPDFTests(TestCase):
         Tests for RenderPDF class
     """
     def setUp(self):
-        settings.MEDIA_ROOT = '/home/rochapps/www/pdf/media'
-        settings.MEDIA_URL = '/media/'
-        self.template = 'django_pdf/hello_world.html'
+        self.template = 'template.pdf'
         self.factory = RequestFactory()
         self.url = '/'
-        
+
     def test_fetch_resources(self):
-        request = self.factory.get(self.url)
-        view = RenderPDF(request=request)
-        asset_url = '/media/logo.png'
+        view = RenderPDF()
+        asset_url = '/static/logo.png'
         absolute_path = view.fetch_resources(uri=asset_url)
         self.assertEqual(
-            absolute_path, 
-            '/home/rochapps/www/pdf/media/logo.png'
+            absolute_path,
+            settings.STATIC_ROOT + '/logo.png'
         )
-        
+
     def test_render_to_response(self):
         """
             render_to_response should call render_to_pdf
         """
-        request = self.factory.get(self.url)
-        view = RenderPDF(request=request)
+        view = RenderPDF()
         view.template_name = self.template
         context = {}
         with patch.object(RenderPDF, 'render_to_pdf') as render_to_pdf:
             view.render_to_response(context)
-            render_to_pdf.assert_called_once_with()
-            
+            render_to_pdf.assert_called_once_with(context)
+
     def test_render_to_pdf(self):
         """
             test the mimetype of the output
         """
-        request = self.factory.get(self.url)
-        view = RenderPDF(request=request)
+        view = RenderPDF()
         view.template_name = self.template
-        context = {}
-        response = view.render_to_pdf(**context)
+        response = view.render_to_pdf({})
         self.assertEqual(response.get('content-type'), 'application/pdf')
         self.assertIn(
             'ReportLab Generated PDF document http://www.reportlab.com',

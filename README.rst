@@ -1,10 +1,14 @@
-=====
-PDF
-=====
+========================
+pdf
+========================
 
-PDF is a simple Django app to render templates in PDF format. It overwrites the
-render_to_response method and adds absoulte paths to give you access to your
-css and images files.
+django-pdf lets you to render any view as pdf, css and images are also available
+in your templates.
+
+.. image::
+    https://secure.travis-ci.org/rochapps/django-pdf?branch=master
+    :alt: Build Status
+        :target: https://secure.travis-ci.org/rochapps/django-pdf
 
 Requirements
 ============
@@ -14,10 +18,11 @@ Requirements
     4. html5lib>=0.95
     5. mock (for testing)
 
+
 Quick start
 ===========
 
-1. Define ``MEDIA_ROOT`` and ``MEDIA_URL`` in your settings.py file
+1. Define ``STATIC_ROOT`` and ``STATIC_URL`` in your settings.py file.
 2. Subclass RenderPDF, set the ``template_name`` attribute.
 
 For example, in myapp/views.py::
@@ -39,3 +44,32 @@ In myapp/urls.py::
     urlpatterns = patterns('',
         url(r'^transactions/$', TransactionListView.as_view()),
     )
+
+
+Running the Tests
+------------------------------------
+
+You can run the tests with via::
+
+    python setup.py test
+
+or::
+
+    python runtests.py
+
+
+License
+--------------------------------------
+
+django-secure-input is released under the BSD License. See the
+`LICENSE <https://github.com/rochapps/django-pdf/blob/master/LICENSE>`_ file for more details.
+
+
+Contributing
+--------------------------------------
+
+If you think you've found a bug or are interested in contributing to this project
+check out `django-secure-input on Github <https://github.com/rochapps/django-pdf>`_.
+
+Development sponsored by `RochApps, LLC
+<http://www.rochapps.com/services>`_.

@@ -1,6 +1,0 @@
-html5lib==0.95
-pisa==3.0.33
-pyPdf==1.13
-reportlab==2.6
-mock
-

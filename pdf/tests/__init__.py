@@ -1,1 +1,1 @@
-from pdf.tests.views import RenderPDFTests
+from pdf.tests.test_views import RenderPDFTests
