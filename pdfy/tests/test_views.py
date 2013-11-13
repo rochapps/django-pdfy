@@ -4,7 +4,7 @@ from django.conf import settings
 from django.test import TestCase
 from django.test.client import RequestFactory
 
-from pdf.views import RenderPDF
+from pdfy.views import RenderPDF
 
 
 class RenderPDFTests(TestCase):
@@ -43,7 +43,7 @@ class RenderPDFTests(TestCase):
         view = RenderPDF()
         view.template_name = self.template
         response = view.render_to_pdf({})
-        self.assertEqual(response.get('content-type'), 'application/pdf')
+        self.assertEqual(response.get('content-type'), 'application/pdfy')
         self.assertIn(
             'ReportLab Generated PDF document http://www.reportlab.com',
             response.content)

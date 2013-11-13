@@ -21,7 +21,7 @@ class RenderPDF(object):
         class based view to render template in PDF format.
     """
 
-    template_name = 'template.pdf'
+    template_name = 'template.pdfy'
     assets_root = settings.STATIC_ROOT
     assets_url = settings.STATIC_URL
 
@@ -41,7 +41,7 @@ class RenderPDF(object):
 
     def render_to_pdf(self, context):
         """
-            renders pdf file.
+            renders pdfy file.
         """
         template = get_template(self.template_name)
         template_context = Context(context)
@@ -50,6 +50,6 @@ class RenderPDF(object):
         pdf = pisa.pisaDocument(StringIO.StringIO(html.encode("UTF-8")),
             result, link_callback=self.fetch_resources)
         if not pdf.err:
-            return HttpResponse(result.getvalue(), mimetype='application/pdf')
+            return HttpResponse(result.getvalue(), mimetype='application/pdfy')
         logger.error(pdf.err)
         return HttpResponse('We had some errors<pre>%s</pre>' % escape(html))

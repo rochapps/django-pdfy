@@ -1,5 +1,5 @@
 ========================
-pdf
+django-pdfy
 ========================
 
 django-pdf lets you to render any view as pdf, css and images are also available

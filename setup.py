@@ -13,15 +13,15 @@ def read_file(filename):
 
 
 setup(
-    name='django-pdf',
-    version=__import__('pdf').__version__,
+    name='django-pdfy',
+    version=__import__('pdfy').__version__,
     author='Victor Rocha',
     author_email='victor@rochapps.com',
     packages=find_packages(),
     include_package_data=True,
-    url='https://github.com/rochapps/django-pdf',
+    url='https://github.com/rochapps/django-pdfy',
     license='BDS',
-    description=u' '.join(__import__('pdf').__doc__.splitlines()).strip(),
+    description=u' '.join(__import__('pdfy').__doc__.splitlines()).strip(),
     classifiers=[
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
         'Intended Audience :: Developers',
