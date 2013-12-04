@@ -9,7 +9,7 @@ from pdfy.views import RenderPDF
 
 class RenderPDFTests(TestCase):
     """
-        Tests for RenderPDF class
+    Tests for RenderPDF class
     """
     def setUp(self):
         self.template = 'template.pdf'
@@ -27,7 +27,7 @@ class RenderPDFTests(TestCase):
 
     def test_render_to_response(self):
         """
-            render_to_response should call render_to_pdf
+        render_to_response should call render_to_pdf
         """
         view = RenderPDF()
         view.template_name = self.template
@@ -43,7 +43,8 @@ class RenderPDFTests(TestCase):
         view = RenderPDF()
         view.template_name = self.template
         response = view.render_to_pdf({})
-        self.assertEqual(response.get('content-type'), 'application/pdfy')
+        self.assertEqual(response.get('content-type'), 'application/pdf')
         self.assertIn(
             'ReportLab Generated PDF document http://www.reportlab.com',
-            response.content)
+            response.content
+        )
