@@ -58,6 +58,6 @@ class RenderPDF(object):
 
         if pdf.err:
             logger.error(pdf.err)
-            return HttpResponse('Error: <pre>%s</pre>' % escape(html))
+            return 'Error: <pre>%s</pre>' % escape(html)
 
         return result.getvalue()
