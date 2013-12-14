@@ -39,7 +39,7 @@ class RenderPDF(object):
     def render_to_response(self, context, **response_kwargs):
         context.update(response_kwargs)
         logger.debug(context)
-        return self.render_to_pdf(context)
+        return HttpResponse(self.render_to_pdf(context), mimetype='application/pdf')
 
     def render_to_pdf(self, context):
         """
@@ -60,4 +60,4 @@ class RenderPDF(object):
             logger.error(pdf.err)
             return HttpResponse('Error: <pre>%s</pre>' % escape(html))
 
-        return HttpResponse(result.getvalue(), mimetype='application/pdf')
+        return result.getvalue()
