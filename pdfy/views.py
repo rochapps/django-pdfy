@@ -41,11 +41,11 @@ class RenderPDF(object):
         logger.debug(context)
         return HttpResponse(self.render_to_pdf(context), mimetype='application/pdf')
 
-    def render_to_pdf(self, context):
+    def render_to_pdf(self, context, template_name=None):
         """
         Renders pdf file with given context
         """
-        template = get_template(self.template_name)
+        template = get_template(template_name or self.template_name)
         template_context = Context(context)
         html = template.render(template_context)
         result = StringIO.StringIO()
