@@ -43,7 +43,7 @@ class RenderPDFTests(TestCase):
         view = RenderPDF()
         view.template_name = self.template
         response = view.render_to_pdf({})
-        self.assertEqual(response.get('content-type'), 'application/pdfy')
+        self.assertEqual(response.get('content-type'), 'application/pdf')
         self.assertIn(
             'ReportLab Generated PDF document http://www.reportlab.com',
             response.content)
