@@ -50,6 +50,6 @@ class RenderPDF(object):
         pdf = pisa.pisaDocument(StringIO.StringIO(html.encode("UTF-8")),
             result, link_callback=self.fetch_resources)
         if not pdf.err:
-            return HttpResponse(result.getvalue(), mimetype='application/pdfy')
+            return HttpResponse(result.getvalue(), mimetype='application/pdf')
         logger.error(pdf.err)
         return HttpResponse('We had some errors<pre>%s</pre>' % escape(html))
