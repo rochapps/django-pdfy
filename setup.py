@@ -34,12 +34,10 @@ setup(
     ],
     long_description=read_file('README.rst'),
     install_requires=[
-        'html5lib==0.95',
-        'pisa==3.0.33',
-        'pyPdf==1.13',
-        'reportlab==2.6'
+        'django>1.3',
+        'xhtml2pdf==0.0.5',
     ],
-    tests_require=('mock'),
+    tests_require=('mock', ),
     test_suite="runtests.runtests",
     zip_safe=False,
 )

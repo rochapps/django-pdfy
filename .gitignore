@@ -10,3 +10,7 @@
 *.egg-info/*
 docs/_build/*
 dist/*
+*.egg/
+build/
+.idea/
+.env/
