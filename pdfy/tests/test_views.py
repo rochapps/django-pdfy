@@ -36,7 +36,7 @@ class RenderPDFTests(TestCase):
             view.render_to_response(context)
             render_to_pdf.assert_called_once_with(context)
 
-    def test_mime_type(self):
+    def test_pdf(self):
         """
         Test the mimetype of the output
         """
