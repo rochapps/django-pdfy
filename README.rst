@@ -6,18 +6,21 @@ django-pdf lets you to render any view as pdf, css and images are also available
 in your templates.
 
 .. image::
-    https://secure.travis-ci.org/rochapps/django-pdf.png
+    https://secure.travis-ci.org/rochapps/django-pdfy.png
     :alt: Build Status
         :target: https://secure.travis-ci.org/rochapps/django-pdf
 
 Requirements
 ============
-    1. pisa>=3.0.33
-    2. pyPdf>=1.13
-    3.reportlab>=2.6
-    4. html5lib>=0.95
+    1. django>=1.3
+    2. xhtml2pdf==0.0.5
     5. mock (for testing)
 
+Install
+=======
+Use pip to install::
+
+    pip install django-pdfy
 
 Quick start
 ===========
@@ -28,13 +31,11 @@ Quick start
 For example, in myapp/views.py::
 
     from myapp.models import Transaction
-    from pdf.views import RenderPDF
+    from pdfy.views import RenderPDF
     from django.views.generic import ListView
 
     class TransactionListView(RenderPDF, ListView):
-        # base_queryset is a queryset that contains all the objects that are
-        # accessible by the API:
-        template_name = 'mydpf.html'
+        template_name = 'mypdf.html'
         model = Transaction
 
 In myapp/urls.py::
@@ -69,7 +70,7 @@ Contributing
 --------------------------------------
 
 If you think you've found a bug or are interested in contributing to this project
-check out `django-secure-input on Github <https://github.com/rochapps/django-pdf>`_.
+check out `django-pdfy on Github <https://github.com/rochapps/django-pdfy>`_.
 
 Development sponsored by `RochApps, LLC
 <http://www.rochapps.com/services>`_.
