@@ -38,7 +38,8 @@ class RenderPDFTests(TestCase):
 
     def test_pdf(self):
         """
-        Test the mimetype of the output
+        Test the mimetype of the output and verifies that it is a
+        ReportLab Generated PDF document.
         """
         view = RenderPDF()
         view.template_name = self.template
