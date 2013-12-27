@@ -49,6 +49,10 @@ class RenderPDF(object):
 
     def render_to_response(self, context, **response_kwargs):
         context.update(response_kwargs)
+        context.update({
+            "STATIC_URL": settings.STATIC_URL,
+            "MEDIA_URL": settings.MEDIA_URL,
+        })
         logger.debug(context)
         return HttpResponse(self.render_to_pdf(context), mimetype='application/pdf')
 
