@@ -70,7 +70,7 @@ Contributing
 --------------------------------------
 
 If you think you've found a bug or are interested in contributing to this project
-check out `django-secure-input on Github <https://github.com/rochapps/django-pdfy>`_.
+check out `django-pdfy on Github <https://github.com/rochapps/django-pdfy>`_.
 
 Development sponsored by `RochApps, LLC
 <http://www.rochapps.com/services>`_.
