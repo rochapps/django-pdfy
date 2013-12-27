@@ -2,11 +2,13 @@
     RenderPDF helper class
 
 """
-import os
 import cStringIO as StringIO
-import ho.pisa as pisa
 from cgi import escape
 import logging
+import os
+import re
+
+import ho.pisa as pisa
 
 from django.conf import settings
 from django.http import HttpResponse
@@ -22,15 +24,17 @@ class RenderPDF(object):
     """
 
     template_name = 'template.pdfy'
-    assets_root = settings.STATIC_ROOT
-    assets_url = settings.STATIC_URL
 
     def fetch_resources(self, uri, rel=''):
         """"
             Method return absolute path to resources.
         """
-        absolute_path = os.path.join(self.assets_root,
-            uri.replace(self.assets_url, ""))
+        if settings.STATIC_URL in uri:
+            absolute_path = os.path.join(settings.STATIC_ROOT,
+                uri.replace(settings.STATIC_URL, ""))
+        else:
+            absolute_path = os.path.join(settings.MEDIA_ROOT,
+                uri.replace(settings.MEDIA_URL, ""))
         logger.debug(absolute_path)
         return absolute_path
 
