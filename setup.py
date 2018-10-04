@@ -34,8 +34,8 @@ setup(
     ],
     long_description=read_file('README.rst'),
     install_requires=[
-        'django>1.3',
-        'xhtml2pdf==0.0.5',
+        'django>1.11',
+        'xhtml2pdf==0.2.3',
     ],
     tests_require=('mock', ),
     test_suite="runtests.runtests",

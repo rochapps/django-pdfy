@@ -4,7 +4,7 @@
 """
 import logging
 import os
-import cStringIO as StringIO
+from io import StringIO, BytesIO
 from cgi import escape
 
 import xhtml2pdf.pisa as pisa
@@ -12,7 +12,6 @@ import xhtml2pdf.pisa as pisa
 from django.conf import settings
 from django.http import HttpResponse
 from django.template.loader import get_template
-from django.template import Context
 
 logger = logging.getLogger(__name__)
 
@@ -54,21 +53,20 @@ class RenderPDF(object):
             "MEDIA_URL": settings.MEDIA_URL,
         })
         logger.debug(context)
-        return HttpResponse(self.render_to_pdf(context), mimetype='application/pdf')
+        return HttpResponse(self.render_to_pdf(context), content_type='application/pdf')
 
     def render_to_pdf(self, context):
         """
         Renders pdf file with given context
         """
         template = get_template(self.template_name)
-        template_context = Context(context)
+        template_context = context
         html = template.render(template_context)
-        result = StringIO.StringIO()
+        result = BytesIO()
         pdf = pisa.pisaDocument(
-            StringIO.StringIO(html.encode("UTF-8")),
+            StringIO(html),
             result,
             link_callback=self.fetch_resources,
-            encoding='UTF-8'
         )
         if pdf.err:
             logger.error(pdf.err)
