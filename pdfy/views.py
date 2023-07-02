@@ -5,7 +5,7 @@
 import logging
 import os
 from io import StringIO, BytesIO
-from cgi import escape
+from html import escape
 
 import xhtml2pdf.pisa as pisa
 
